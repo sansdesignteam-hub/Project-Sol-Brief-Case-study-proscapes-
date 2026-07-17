@@ -173,7 +173,7 @@ Prompt copy-paste lengkap → [`prompt-playbook-sol.md`](./prompt-playbook-sol.m
 
 # Design.md Project
 
----
+```yaml
 version: alpha
 name: Sol Proscapes Earthy Outdoor
 description: A grounded, premium outdoor-living system built on woody terracotta, deep olive-teal, and warm sand — calm and natural, with confident warmth at every point of action.
@@ -319,7 +319,7 @@ components:
     typography: "{typography.body-md}"
     rounded: "{rounded.lg}"
     padding: "20px 24px"
----
+
 
 # Sol — Proscapes Design System
 
@@ -358,3 +358,4 @@ Primary buttons are pill-shaped woody CTAs with generous 14×28 padding and a 52
 - Don't add accent stripes or hard dividers where whitespace would do.
 - Don't mix radius scales randomly on the same surface.
 - Don't stack heavy shadows — keep depth tonal and subtle.
+```
