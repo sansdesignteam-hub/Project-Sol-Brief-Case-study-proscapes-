@@ -151,7 +151,6 @@ typography:
 | **04 Hi-Fi** | `design.md` final + wireframe | Buat variable dari homepage, bangun hi-fi, bind ke token | `figma-generate-library`, `figma-generate-design` |
 | **05 Prototype** | hi-fi HTML / Figma URL | Tambah motion GSAP + ScrollTrigger, hormati reduced-motion | `gsap-scrolltrigger`, `gsap-timeline` |
 
-Prompt copy-paste lengkap → [`prompt-playbook-sol.md`](./prompt-playbook-sol.md)
 
 ---
 
