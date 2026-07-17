@@ -1,10 +1,3 @@
----
-marp: true
-title: Designing with Claude — Project Sol
-author: Sans Design
-paginate: true
-theme: default
----
 
 <!-- _paginate: false -->
 <!-- _backgroundColor: #1D2E33 -->
