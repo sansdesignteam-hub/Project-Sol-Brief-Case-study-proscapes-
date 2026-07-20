@@ -1,23 +1,44 @@
+# Designing with Claude — Project Sol
 
-<!-- _paginate: false -->
-<!-- _backgroundColor: #1D2E33 -->
-<!-- _color: #FFFFFF -->
+> Alur kerja desain end-to-end untuk **Project Sol** (Proscapes.us), memakai Claude sebagai akselerator di setiap tahap — bukan pengganti keputusan desain.
 
-**SANS DESIGN · DESIGN WORKFLOW**
+**Alur:** `Brief · Notion` → `Moodboard` → `Wireframe` → `Hi-Fi` → `Prototype`
 
-# Designing with Claude
+```mermaid
+flowchart LR
+    A[Brief · Notion] --> B[Moodboard]
+    B --> C[Wireframe]
+    C --> D[Hi-Fi]
+    D --> E[Prototype]
+    DM[(design.md)] -.-> B & C & D & E
+```
 
-### Alur kerja desain untuk **Project Sol** — Proscapes.us
+**Palet Sol:** `#985131` woody · `#1D2E33` ink · `#516C65` olive-teal · `#E8C9A8` peach · `#FBF7F1` sand
 
-`Brief · Notion` → `Moodboard` → `Wireframe` → `Hi-Fi` → `Prototype`
+🔗 **Live artifact:** https://claude.ai/code/artifact/c534a6ed-8b09-4dfb-b949-fd8ba1dbe23f
 
-🟫 `#985131` woody  🟩 `#516C65` olive  🟢 `#6B7A55` sage  🟨 `#E8C9A8` peach
+---
+
+## Daftar Isi
+
+- [Lima tahap, satu alur](#lima-tahap-satu-alur)
+- [Tahap 01 — Brief dari Notion](#tahap-01--brief-dari-notion)
+- [Tahap 02 — Moodboarding](#tahap-02--moodboarding)
+- [Tahap 03 — Wireframing](#tahap-03--wireframing)
+- [Tahap 04 — Hi-Fi Design](#tahap-04--hi-fi-design)
+- [Pelajaran: bikin variable dari homepage dulu](#pelajaran-bikin-variable-dari-homepage-dulu)
+- [Tahap 05 — Prototype](#tahap-05--prototype)
+- [Full workflow atau sebagian?](#full-workflow-atau-sebagian)
+- [design.md — benang merah](#designmd--benang-merah)
+- [Prompt & skill tiap tahap](#prompt--skill-tiap-tahap)
+- [Prompt lengkap per tahap](#prompt-lengkap-per-tahap)
+- [design.md — file lengkap (copy-paste)](#designmd--file-lengkap-copy-paste)
 
 ---
 
 ## Lima tahap, satu alur
 
-Dari brief mentah di Notion sampai prototipe yang bisa diklik. Claude masuk di setiap tahap — sebagai **akselerator, bukan pengganti** keputusan desain.
+Dari brief mentah di Notion sampai prototipe yang bisa diklik. Claude masuk di setiap tahap sebagai **akselerator, bukan pengganti** keputusan desain.
 
 | # | Tahap | Fokus | Peran Claude |
 |---|---|---|---|
@@ -37,8 +58,6 @@ Dari brief mentah di Notion sampai prototipe yang bisa diklik. Claude masuk di s
 - **Peran Claude** — Merangkum brief jadi poin desain actionable, menarik requirement yang belum terjawab, menyusun content inventory awal.
 - **Catatan** — Claude paling kuat di sintesis & eksplorasi, bukan "langsung jadi". Tentukan dulu: full workflow atau sebagian.
 
-`Langkah 1 dari 5`
-
 ---
 
 ## Tahap 02 — Moodboarding
@@ -48,8 +67,6 @@ Dari brief mentah di Notion sampai prototipe yang bisa diklik. Claude masuk di s
 - **Yang terjadi** — Kumpulkan arah visual Sol: nuansa natural/earthy, palet, pairing font, referensi studio sebagai benchmark rasa.
 - **Peran Claude** — Mengartikulasikan art direction jadi kata, mengusulkan palet & kombinasi font, bikin gambaran cepat via HTML untuk uji vibe.
 - **Catatan** — Untuk arah custom banget, Claude bagus untuk "gambaran" & eksplorasi awal; finishing rasa tetap keputusan desainer.
-
-`Langkah 2 dari 5`
 
 ---
 
@@ -61,8 +78,6 @@ Dari brief mentah di Notion sampai prototipe yang bisa diklik. Claude masuk di s
 - **Peran Claude** — Generate struktur section dari brief, mengusulkan urutan & pola layout, mempercepat iterasi beberapa varian.
 - **Catatan** — Kerjakan **homepage lebih dulu** sebagai patokan; pola yang matang jadi acuan untuk halaman lain.
 
-`Langkah 3 dari 5`
-
 ---
 
 ## Tahap 04 — Hi-Fi Design
@@ -71,27 +86,31 @@ Dari brief mentah di Notion sampai prototipe yang bisa diklik. Claude masuk di s
 
 - **Yang terjadi** — Bangun tampilan final: komponen, spacing, tipografi & warna dari token semantik Sol (`text-primary`, `woody`, `olive`, `on-teal`, `peach`).
 - **Peran Claude** — Binding variable ke properti, generate section, jaga konsistensi token, translate *design → code* saat perlu.
-- **Catatan** — Mulai dari satu halaman yang sudah matang (lihat slide berikut).
-
-`Langkah 4 dari 5`
+- **Catatan** — Mulai dari satu halaman yang sudah matang (lihat bagian berikut).
 
 ---
 
-<!-- _backgroundColor: #1D2E33 -->
-<!-- _color: #FFFFFF -->
-
 ## Pelajaran: bikin variable dari homepage dulu
 
-Merapikan token di awal — sebelum ada halaman nyata — justru bikin arsitektur **berantakan**. Yang terbukti jalan: tracking variable dari homepage yang sudah jadi.
+> Merapikan token di awal — sebelum ada halaman nyata — justru bikin arsitektur **berantakan**. Yang terbukti jalan: tracking variable dari homepage yang sudah jadi.
 
-`1 · Homepage matang` → `2 · Ekstrak token` → `3 · Generate collection` → `4 · Apply ke page lain`
+```mermaid
+flowchart LR
+    A["1 · Homepage matang"] --> B["2 · Ekstrak token"]
+    B --> C["3 · Generate collection"]
+    C --> D["4 · Apply ke page lain"]
+```
 
-1. **Homepage matang** — selesaikan satu halaman dulu sebagai fondasi visual.
-2. **Ekstrak token** — tarik warna, teks & spacing jadi variable semantik.
-3. **Generate collection** — susun Token Color, Typography, Radius, Spacing.
-4. **Apply ke page lain** — terapkan & bind ke halaman berikutnya (dibantu Claude).
+| Langkah | Aksi |
+|---|---|
+| **1. Homepage matang** | Selesaikan satu halaman dulu sebagai fondasi visual. |
+| **2. Ekstrak token** | Tarik warna, teks & spacing jadi variable semantik. |
+| **3. Generate collection** | Susun Token Color, Typography, Radius, Spacing. |
+| **4. Apply ke page lain** | Terapkan & bind ke halaman berikutnya — dibantu Claude. |
 
 > **Prinsipnya:** token *mengikuti* halaman nyata, bukan sebaliknya. Homepage jadi patokan, sisanya di-reuse.
+
+*Konteks: di project Proscape, mencoba merapikan variable di awal (tanpa halaman acuan) malah berantakan — ujungnya harus ngetrack variable dari home dulu.*
 
 ---
 
@@ -103,7 +122,7 @@ Merapikan token di awal — sebelum ada halaman nyata — justru bikin arsitektu
 - **Peran Claude** — Prototipe motion cepat lewat HTML/GSAP, generate interaksi, bikin showcase interaktif sebagai proof-of-concept.
 - **Catatan** — Ideal untuk eksplorasi motion & pembuktian ide sebelum di-porting ke produksi.
 
-`Langkah 5 dari 5`
+🔗 **Contoh hasil:** [live artifact](https://claude.ai/code/artifact/c534a6ed-8b09-4dfb-b949-fd8ba1dbe23f)
 
 ---
 
@@ -123,21 +142,12 @@ Handover alurnya ke tim dulu, lalu sepakati Claude dipakai penuh atau di titik t
 
 ## design.md — benang merah
 
-Satu file `design.md` dibuat di tahap awal, lalu **di-upload ulang sebagai konteks di tiap tahap berikutnya**. Itu yang menjaga token konsisten dari homepage sampai halaman terakhir.
+Satu file `design.md` dibuat di tahap awal (Brief → Moodboard), lalu **di-upload ulang sebagai konteks di tiap tahap berikutnya**. Itu yang menjaga token & keputusan desain konsisten dari homepage sampai halaman terakhir.
 
 **Isinya:** Colors (11 token) · Typography (11 token) · Spacing & Rounded · Components · Do's & Don'ts
 
-```yaml
-colors:
-  primary:   "#985131"   # woody — CTA, active
-  secondary: "#1D2E33"   # ink — headlines, nav
-  tertiary:  "#516C65"   # olive-teal — panels
-typography:
-  headline:  Fraunces
-  body:      Inter
-```
-
 > Dipakai di: **Moodboard · Wireframe · Hi-Fi · Prototype**
+> File lengkapnya ada di [bagian akhir](#designmd--file-lengkap-copy-paste) — tinggal copy.
 
 ---
 
@@ -145,34 +155,109 @@ typography:
 
 | Tahap | Upload | Prompt starter | Skill |
 |---|---|---|---|
-| **01 Brief** | `brief.md` + referensi | Rangkum brief → requirements & content inventory, generate `design.md` | `prd-to-design-system` |
-| **02 Moodboard** | `design.md` + referensi | Usulkan 2–3 arah palet + font pairing, bikin 1 gambaran HTML | `ui-ux-pro-max`, `frontend-design` |
+| **01 Brief** | `brief.md` (Notion) + referensi | Rangkum brief → requirements & content inventory, generate `design.md` | `prd-to-design-system` |
+| **02 Moodboard** | `design.md` draft + referensi visual | Usulkan 2–3 arah palet + font pairing, bikin 1 gambaran HTML | `ui-ux-pro-max`, `frontend-design` |
 | **03 Wireframe** | `design.md` + sitemap | Susun struktur section homepage low-fi + varian hero | `ui-ux-pro-max` |
-| **04 Hi-Fi** | `design.md` final + wireframe | Buat variable dari homepage, bangun hi-fi, bind ke token | `figma-generate-library`, `figma-generate-design` |
+| **04 Hi-Fi** | `design.md` final + wireframe | Buat variable dari homepage, bangun hi-fi, bind tiap properti ke token | `figma-generate-library`, `figma-generate-design` |
 | **05 Prototype** | hi-fi HTML / Figma URL | Tambah motion GSAP + ScrollTrigger, hormati reduced-motion | `gsap-scrolltrigger`, `gsap-timeline` |
-
 
 ---
 
-<!-- _paginate: false -->
-<!-- _backgroundColor: #16242A -->
-<!-- _color: #FFFFFF -->
+## Prompt lengkap per tahap
 
-# Satu alur, dari brief sampai prototipe
+<details>
+<summary><strong>01 · Brief dari Notion</strong></summary>
 
-### `Brief · Notion` → `Moodboard` → `Wireframe` → `Hi-Fi` → `Prototype`
+```
+Ini brief Project Sol (brand landscaping/outdoor, Proscapes.us) yang aku export
+dari Notion. Tolong:
+1. Rangkum jadi design requirements yang actionable (tujuan brand, personality,
+   target user, tone).
+2. Tarik pertanyaan/requirement yang belum kejawab dari brief ini.
+3. Susun content inventory awal untuk homepage (section apa saja, konten per
+   section).
+4. Lanjutkan generate design.md (pakai skill prd-to-design-system) — token warna,
+   tipografi, spacing, rounded, komponen. Arah rasa: earthy, natural, premium.
+```
 
-*Mulai dari homepage, track token dari sana, dan pakai Claude untuk mempercepat — bukan menggantikan keputusan desain.*
+</details>
 
-<sub>Sans Design · Workflow untuk Project Sol</sub>
+<details>
+<summary><strong>02 · Moodboarding</strong></summary>
 
+```
+Berdasarkan design.md ini, bantu aku eksplorasi art direction untuk Sol. Tolong:
+1. Usulkan 2–3 arah palet (masing-masing dengan alasan rasa) di sekitar tone
+   earthy: woody, olive-teal, sand, peach.
+2. Untuk tiap arah, usulkan font pairing (headline + body) dan style/vibe-nya.
+3. Bikin satu gambaran HTML cepat (hero + 1 section) untuk arah yang paling kuat,
+   biar aku bisa ngetes vibe-nya — bukan final, cukup buat rasa.
 
+Catatan: yang custom banget cukup jadi gambaran; finishing rasa aku pegang manual.
+```
 
+</details>
 
+<details>
+<summary><strong>03 · Wireframing</strong></summary>
 
-# Design.md Project
+```
+Pakai design.md + content inventory ini. Bikin wireframe low-fi untuk homepage
+Sol dulu (ini jadi patokan untuk halaman lain nanti). Tolong:
+1. Susun urutan section + hierarki konten (fokus struktur, belum estetika).
+2. Untuk section kunci (hero, layanan, proses, galeri, CTA), usulkan pola layout
+   + alasannya.
+3. Kasih 1–2 varian untuk hero biar bisa dibandingkan.
 
-```yaml
+Output sebagai HTML low-fi (grayscale/box) atau struktur bertingkat — mana yang
+lebih cepat diiterasi.
+```
+
+</details>
+
+<details>
+<summary><strong>04 · Hi-Fi Design</strong></summary>
+
+```
+Konteks: design.md final untuk Sol + wireframe homepage yang udah disetujui.
+Kerjakan di Figma. Tolong:
+1. Buat variable collection DULU dari homepage ini — Token Color, Typography,
+   Radius, Spacing — sesuai design.md. (Jangan definisiin token secara abstrak
+   duluan; ikuti halaman nyata.)
+2. Bangun homepage hi-fi section per section, bind tiap properti ke variable,
+   bukan nilai hardcoded.
+3. Jaga konsistensi semantik token (text-primary, woody/accent, olive, on-teal).
+
+Setelah homepage rapi, token ini yang nanti kita apply & generate ke halaman
+berikutnya.
+```
+
+</details>
+
+<details>
+<summary><strong>05 · Prototype</strong></summary>
+
+```
+Ini hi-fi homepage Sol. Bikin prototipe motion sebagai proof-of-concept
+(standalone HTML, self-contained). Tolong:
+1. Hero: reveal masuk pakai GSAP (SplitText untuk headline, stagger halus).
+2. Section: ScrollTrigger untuk reveal on-scroll + 1 pinned sequence kalau cocok.
+3. Rasa motion: premium & natural (easing lembut, durasi enak), bukan flashy.
+4. Hormati prefers-reduced-motion.
+
+Ini buat validasi rasa dulu sebelum di-porting ke implementasi produksi.
+```
+
+</details>
+
+---
+
+## design.md — file lengkap (copy-paste)
+
+> Simpan isi blok di bawah ini sebagai `design.md`, lalu upload sebagai konteks di tiap tahap.
+
+````markdown
+---
 version: alpha
 name: Sol Proscapes Earthy Outdoor
 description: A grounded, premium outdoor-living system built on woody terracotta, deep olive-teal, and warm sand — calm and natural, with confident warmth at every point of action.
@@ -318,7 +403,7 @@ components:
     typography: "{typography.body-md}"
     rounded: "{rounded.lg}"
     padding: "20px 24px"
-
+---
 
 # Sol — Proscapes Design System
 
@@ -357,4 +442,9 @@ Primary buttons are pill-shaped woody CTAs with generous 14×28 padding and a 52
 - Don't add accent stripes or hard dividers where whitespace would do.
 - Don't mix radius scales randomly on the same surface.
 - Don't stack heavy shadows — keep depth tonal and subtle.
-```
+````
+
+
+**Prinsip kunci:** mulai dari homepage · token mengikuti halaman nyata · Claude mempercepat, keputusan desain tetap di tangan desainer.
+
+<sub>Sans Design · Workflow untuk Project Sol — Proscapes.us</sub>
